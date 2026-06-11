@@ -53,7 +53,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
 
         <div class="pointer-events-none absolute right-4 top-4 sm:right-8 sm:top-8">
           <img
-            src={`${base}/emblem.png`}
+            src={`${base}emblem.png`}
             alt=""
             width="120"
             height="120"
@@ -103,7 +103,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
           {
             REGISTRY.filter((e) => e.status === "open").map((e, i) => (
               <a
-                href={`${base}/docs/${e.slug}`}
+                href={`${base}docs/${e.slug}`}
                 class="paper group relative flex flex-col gap-2 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_26px_50px_-22px_rgba(40,25,15,0.7)]"
                 style={{ rotate: tilts[i] }}
               >
@@ -140,16 +140,14 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
           {
             REGISTRY.map((entry, i) => {
               const isOpen = entry.status === "open";
-              const href = isOpen ? `${base}/docs/${entry.slug}` : undefined;
-              const Tag = isOpen ? "a" : "div";
               return (
-                <Tag
-                  href={href}
+                <a
+                  href={`${base}docs/${entry.slug}`}
                   class:list={[
                     "flex items-start justify-between gap-4 px-4 py-3 text-sm transition-all",
                     isOpen
                       ? "paper border-l-4 border-l-primary hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-16px_rgba(40,25,15,0.5)]"
-                      : "border border-border/30 bg-card/50 opacity-50 cursor-default",
+                      : "border border-border/30 bg-card/50 opacity-50 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-16px_rgba(40,25,15,0.5)]",
                   ]}
                   style={{ rotate: i % 2 === 0 ? "-0.2deg" : "0.2deg" }}
                 >
@@ -180,7 +178,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
                   >
                     {statusLabel[entry.status]}
                   </span>
-                </Tag>
+                </a>
               );
             })
           }

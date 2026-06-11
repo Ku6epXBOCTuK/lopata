@@ -19,7 +19,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         env:
-          BASE_PATH: /lopata
+          BASE_PATH: /lopata/
 
   deploy:
     needs: build
