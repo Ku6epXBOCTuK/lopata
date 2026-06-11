@@ -1,33 +1,33 @@
 ---
-import BaseLayout from '../layouts/base.astro'
-import SiteHeader from '../components/SiteHeader.astro'
-import SiteFooter from '../components/SiteFooter.astro'
-import Stamp from '../components/Stamp.astro'
-import OverlayStamp from '../components/OverlayStamp.astro'
-import Perforation from '../components/Perforation.astro'
-import { REGISTRY } from '../lib/registry'
+import OverlayStamp from "../components/OverlayStamp.astro";
+import Perforation from "../components/Perforation.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Stamp from "../components/Stamp.astro";
+import BaseLayout from "../layouts/base.astro";
+import { REGISTRY } from "../lib/registry";
 
 const statusLabel: Record<string, string> = {
-  open: 'ОТКРЫТ',
-  deleted: 'ДАННЫЕ УДАЛЕНЫ',
-  restricted: 'ДОСТУП ОГРАНИЧЕН',
-  lost: 'ДАННЫЕ ПОТЕРЯНЫ',
-  classified: 'ЗАСЕКРЕЧЕНО',
-  password: 'ДОСТУП ПО ПАРОЛЮ',
-  danger: 'ОПАСНОСТЬ ЗАРАЖЕНИЯ',
-}
+  open: "ОТКРЫТ",
+  deleted: "ДАННЫЕ УДАЛЕНЫ",
+  restricted: "ДОСТУП ОГРАНИЧЕН",
+  lost: "ДАННЫЕ ПОТЕРЯНЫ",
+  classified: "ЗАСЕКРЕЧЕНО",
+  password: "ДОСТУП ПО ПАРОЛЮ",
+  danger: "ОПАСНОСТЬ ЗАРАЖЕНИЯ",
+};
 
 const statusColor: Record<string, string> = {
-  open: 'text-primary',
-  deleted: 'text-muted-foreground opacity-60',
-  restricted: 'text-muted-foreground opacity-70',
-  lost: 'text-muted-foreground opacity-50',
-  classified: 'text-primary',
-  password: 'text-foreground',
-  danger: 'text-primary',
-}
+  open: "text-primary",
+  deleted: "text-muted-foreground opacity-60",
+  restricted: "text-muted-foreground opacity-70",
+  lost: "text-muted-foreground opacity-50",
+  classified: "text-primary",
+  password: "text-foreground",
+  danger: "text-primary",
+};
 
-const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
+const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
 ---
 
 <BaseLayout title="РЕЕСТР ДОКУМЕНТОВ // Архив ДНТ-7">
@@ -35,7 +35,9 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
     <SiteHeader />
 
     <div class="banner-classified border-y border-foreground/30">
-      <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-1.5 text-[0.65rem] font-700 uppercase tracking-[0.2em] sm:px-6">
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-1.5 text-[0.65rem] font-700 uppercase tracking-[0.2em] sm:px-6"
+      >
         <span>Сов. Секретно</span>
         <span class="hidden sm:inline">Реестр МДС</span>
         <span>Хранить вечно</span>
@@ -45,8 +47,8 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
     <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
       <!-- Hero -->
       <section class="paper relative mb-12 -rotate-[0.4deg] p-6 sm:p-10">
-        <span class="tape -top-3 left-10 rotate-3" aria-hidden="true" />
-        <span class="tape -top-3 right-12 -rotate-2" aria-hidden="true" />
+        <span class="tape -top-3 left-10 rotate-3" aria-hidden="true"></span>
+        <span class="tape -top-3 right-12 -rotate-2" aria-hidden="true"></span>
 
         <div class="pointer-events-none absolute right-4 top-4 sm:right-8 sm:top-8">
           <img
@@ -61,13 +63,14 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
         <p class="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
           Межгалактическое Дачное Сопротивление · Архив ДНТ-7
         </p>
-        <h1 class="mt-3 max-w-2xl text-balance font-heading text-3xl font-700 uppercase leading-[0.95] tracking-tight sm:text-5xl">
+        <h1
+          class="mt-3 max-w-2xl text-balance font-heading text-3xl font-700 uppercase leading-[0.95] tracking-tight sm:text-5xl"
+        >
           Реестр документов МДС
         </h1>
         <p class="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-foreground/90">
-          Рассекреченный реестр документов Межгалактического Дачного Сопротивления.
-          Статус базы данных: доступ ограничен. Требуется ментальный допуск 3-го уровня
-          и шапочка из фольги марки А1.
+          Рассекреченный реестр документов Межгалактического Дачного Сопротивления. Статус базы данных: доступ
+          ограничен. Требуется ментальный допуск 3-го уровня и шапочка из фольги марки А1.
         </p>
 
         <div class="mt-6 flex flex-wrap items-center gap-3">
@@ -87,9 +90,7 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
       <section class="mb-12">
         <div class="mb-6 flex items-end justify-between">
           <div>
-            <h2 class="font-heading text-xl font-700 uppercase tracking-wide">
-              Открытые дела
-            </h2>
+            <h2 class="font-heading text-xl font-700 uppercase tracking-wide">Открытые дела</h2>
             <hr class="rule rule-red mt-2 w-32" />
           </div>
           <p class="font-mono text-[0.65rem] uppercase tracking-wider text-muted-foreground">
@@ -98,27 +99,27 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
         </div>
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {REGISTRY.filter((e) => e.status === 'open').map((e, i) => (
-            <a
-              href={`/docs/${e.slug}`}
-              class="paper group relative flex flex-col gap-2 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_26px_50px_-22px_rgba(40,25,15,0.7)]"
-              style={{ rotate: tilts[i] }}
-            >
-              <span class="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" aria-hidden="true" />
-              <p class="font-heading text-[0.7rem] font-600 uppercase tracking-wider text-primary">
-                {e.id}
-              </p>
-              <h3 class="font-heading text-base font-700 uppercase leading-tight tracking-tight transition-colors group-hover:text-primary">
-                {e.title}
-              </h3>
-              <p class="text-xs leading-snug text-muted-foreground">{e.annotation}</p>
-              <div class="mt-auto flex justify-end">
-                <span class="font-heading text-[0.7rem] font-600 uppercase tracking-wider text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                  Читать →
-                </span>
-              </div>
-            </a>
-          ))}
+          {
+            REGISTRY.filter((e) => e.status === "open").map((e, i) => (
+              <a
+                href={`/docs/${e.slug}`}
+                class="paper group relative flex flex-col gap-2 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_26px_50px_-22px_rgba(40,25,15,0.7)]"
+                style={{ rotate: tilts[i] }}
+              >
+                <span class="tape -top-3 left-1/2 -translate-x-1/2 -rotate-2" aria-hidden="true" />
+                <p class="font-heading text-[0.7rem] font-600 uppercase tracking-wider text-primary">{e.id}</p>
+                <h3 class="font-heading text-base font-700 uppercase leading-tight tracking-tight transition-colors group-hover:text-primary">
+                  {e.title}
+                </h3>
+                <p class="text-xs leading-snug text-muted-foreground">{e.annotation}</p>
+                <div class="mt-auto flex justify-end">
+                  <span class="font-heading text-[0.7rem] font-600 uppercase tracking-wider text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    Читать →
+                  </span>
+                </div>
+              </a>
+            ))
+          }
         </div>
       </section>
 
@@ -126,9 +127,7 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
       <section>
         <div class="mb-6 flex items-end justify-between">
           <div>
-            <h2 class="font-heading text-xl font-700 uppercase tracking-wide">
-              Полный реестр
-            </h2>
+            <h2 class="font-heading text-xl font-700 uppercase tracking-wide">Полный реестр</h2>
             <hr class="rule mt-2 w-40" />
           </div>
           <p class="font-mono text-[0.65rem] uppercase tracking-wider text-muted-foreground">
@@ -137,40 +136,53 @@ const tilts = ['-0.6deg', '0.5deg', '-0.4deg']
         </div>
 
         <div class="space-y-3">
-          {REGISTRY.map((entry, i) => {
-            const isOpen = entry.status === 'open'
-            const href = isOpen ? `/docs/${entry.slug}` : '/404'
-            return (
-              <a
-                href={href}
-                class:list={[
-                  'paper flex items-start justify-between gap-4 px-4 py-3 text-sm transition-all',
-                  isOpen && 'hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-16px_rgba(40,25,15,0.5)]',
-                ]}
-                style={{ rotate: i % 2 === 0 ? '-0.2deg' : '0.2deg' }}
-              >
-                <div class="min-w-0 flex-1">
-                  <span class="font-mono text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-                    {entry.id ? `[${entry.id}]` : '[ДАННЫЕ УДАЛЕНЫ]'}
-                  </span>
-                  <p class="mt-0.5 font-heading text-sm font-600 uppercase leading-snug tracking-tight">
-                    {entry.title}
-                  </p>
-                  <p class="mt-1 text-xs leading-relaxed text-muted-foreground">
-                    {entry.annotation}
-                  </p>
-                </div>
-                <span
+          {
+            REGISTRY.map((entry, i) => {
+              const isOpen = entry.status === "open";
+              const href = isOpen ? `/docs/${entry.slug}` : undefined;
+              const Tag = isOpen ? "a" : "div";
+              return (
+                <Tag
+                  href={href}
                   class:list={[
-                    'shrink-0 font-heading text-[0.6rem] font-600 uppercase tracking-wider',
-                    statusColor[entry.status],
+                    "flex items-start justify-between gap-4 px-4 py-3 text-sm transition-all",
+                    isOpen
+                      ? "paper border-l-4 border-l-primary hover:-translate-y-0.5 hover:shadow-[0_12px_30px_-16px_rgba(40,25,15,0.5)]"
+                      : "border border-border/30 bg-card/50 opacity-50 cursor-default",
                   ]}
+                  style={{ rotate: i % 2 === 0 ? "-0.2deg" : "0.2deg" }}
                 >
-                  {statusLabel[entry.status]}
-                </span>
-              </a>
-            )
-          })}
+                  <div class="min-w-0 flex-1">
+                    <span
+                      class:list={[
+                        "font-mono text-[0.65rem] uppercase tracking-wider",
+                        isOpen ? "text-primary" : "text-muted-foreground",
+                      ]}
+                    >
+                      {entry.id ? `[${entry.id}]` : "[ДАННЫЕ УДАЛЕНЫ]"}
+                    </span>
+                    <p
+                      class:list={[
+                        "mt-0.5 font-heading text-sm font-600 uppercase leading-snug tracking-tight",
+                        !isOpen && "line-through",
+                      ]}
+                    >
+                      {entry.title}
+                    </p>
+                    <p class="mt-1 text-xs leading-relaxed text-muted-foreground">{entry.annotation}</p>
+                  </div>
+                  <span
+                    class:list={[
+                      "shrink-0 font-heading text-[0.65rem] font-600 uppercase tracking-wider",
+                      statusColor[entry.status],
+                    ]}
+                  >
+                    {statusLabel[entry.status]}
+                  </span>
+                </Tag>
+              );
+            })
+          }
         </div>
       </section>
 

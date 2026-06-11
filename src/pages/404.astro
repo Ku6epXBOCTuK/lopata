@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../layouts/base.astro'
-import SiteHeader from '../components/SiteHeader.astro'
-import SiteFooter from '../components/SiteFooter.astro'
-import Perforation from '../components/Perforation.astro'
-import OverlayStamp from '../components/OverlayStamp.astro'
+import OverlayStamp from "../components/OverlayStamp.astro";
+import Perforation from "../components/Perforation.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import BaseLayout from "../layouts/base.astro";
 ---
 
 <BaseLayout title="Доступ запрещён // Архив ДНТ-7">
@@ -11,7 +11,9 @@ import OverlayStamp from '../components/OverlayStamp.astro'
     <SiteHeader />
 
     <div class="banner-classified border-y border-foreground/30">
-      <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-1.5 text-[0.65rem] font-700 uppercase tracking-[0.2em] sm:px-6">
+      <div
+        class="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-1.5 text-[0.65rem] font-700 uppercase tracking-[0.2em] sm:px-6"
+      >
         <span>СОВ. СЕКРЕТНО</span>
         <span class="hidden sm:inline">Гриф особой важности</span>
         <span>Доступ закрыт</span>
@@ -20,7 +22,7 @@ import OverlayStamp from '../components/OverlayStamp.astro'
 
     <main class="mx-auto flex max-w-4xl px-4 py-24 sm:px-6">
       <article class="paper relative mx-auto w-full max-w-lg -rotate-[0.3deg] p-10 text-center">
-        <span class="tape -top-3 left-1/2 -translate-x-1/2 rotate-2" aria-hidden="true" />
+        <span class="tape -top-3 left-1/2 -translate-x-1/2 rotate-2" aria-hidden="true"></span>
 
         <div class="pointer-events-none absolute right-6 top-6 rotate-[12deg]">
           <OverlayStamp class="text-3xl sm:text-4xl">ЗАПРЕЩЕНО</OverlayStamp>
@@ -37,24 +39,20 @@ import OverlayStamp from '../components/OverlayStamp.astro'
         <hr class="rule rule-red mx-auto my-6 w-32" />
 
         <p class="text-sm leading-relaxed text-foreground/90">
-          Запрашиваемый документ находится под грифом особой важности и не
-          подлежит разглашению лицам без ментального допуска 3-го уровня.
+          Запрашиваемый документ находится под грифом особой важности и не подлежит разглашению лицам без ментального
+          допуска 3-го уровня.
         </p>
 
         <p class="mt-3 text-sm leading-relaxed text-foreground/90">
-          Ожидайте следующую партию рассекреченных документов. Сроки
-          рассекречивания будут объявлены дополнительным циркуляром.
+          Ожидайте следующую партию рассекреченных документов. Сроки рассекречивания будут объявлены дополнительным
+          циркуляром.
         </p>
 
         <div class="mt-8">
-          <span class="stamp stamp-skew mx-auto inline-flex px-4 py-2 text-sm">
-            Доступ запрещён
-          </span>
+          <span class="stamp stamp-skew mx-auto inline-flex px-4 py-2 text-sm"> Доступ запрещён </span>
         </div>
 
-        <p class="mt-8 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
-          Форма А-13 · Хранить вечно
-        </p>
+        <p class="mt-8 text-[0.65rem] uppercase tracking-wider text-muted-foreground">Форма А-13 · Хранить вечно</p>
       </article>
     </main>
 
