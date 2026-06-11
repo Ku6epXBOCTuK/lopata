@@ -1,17 +1,116 @@
 ---
+import BaseLayout from '../layouts/base.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import Stamp from '../components/Stamp.astro'
+import OverlayStamp from '../components/OverlayStamp.astro'
+import Perforation from '../components/Perforation.astro'
+import DossierCard from '../components/DossierCard.astro'
+import { DOSSIERS } from '../lib/dossiers'
 
+const tilts = ['-0.6deg', '0.5deg', '-0.4deg', '0.7deg', '-0.5deg', '0.4deg']
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>LOPATA</h1>
-	</body>
-</html>
+<BaseLayout title="АРХИВ ДНТ-7 // Дачно-Наблюдательный Трибунал" description="Рассекреченный архив Дачно-Наблюдательного Трибунала №7. Документы, инструкции и уставы по противодействию рептилоидным агентам планеты Нибиру.">
+  <div class="min-h-screen">
+    <SiteHeader />
+
+    <div class="banner-classified border-y border-foreground/30">
+      <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-1.5 text-[0.65rem] font-700 uppercase tracking-[0.2em] sm:px-6">
+        <span>Сов. Секретно</span>
+        <span class="hidden sm:inline">Экз. № 1 из 3</span>
+        <span>Хранить вечно</span>
+      </div>
+    </div>
+
+    <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+      <section class="paper relative mb-12 -rotate-[0.4deg] p-6 sm:p-10">
+        <span class="tape -top-3 left-10 rotate-3" aria-hidden="true" />
+        <span class="tape -top-3 right-12 -rotate-2" aria-hidden="true" />
+
+        <div class="pointer-events-none absolute right-4 top-4 sm:right-8 sm:top-8">
+          <img
+            src="/emblem.png"
+            alt=""
+            width="120"
+            height="120"
+            class="h-20 w-20 opacity-90 mix-blend-multiply sm:h-28 sm:w-28"
+          />
+        </div>
+
+        <p class="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          Союз Садоводческих Кооперативов · Отдел «Грядка»
+        </p>
+        <h1 class="mt-3 max-w-2xl text-balance font-heading text-3xl font-700 uppercase leading-[0.95] tracking-tight sm:text-5xl">
+          Архив Дачно-Наблюдательного Трибунала №7
+        </h1>
+        <p class="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-foreground/90">
+          Рассекреченный свод документов, инструкций и уставов по
+          противодействию рептилоидным агентам планеты{' '}
+          <span class="font-600 text-primary">Нибиру</span> на территориях
+          садоводческих товариществ. Допуск согласно форме А-13.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <Stamp>Рассекречено · 06.07.2026</Stamp>
+          <Stamp variant="ink" skew={false}>Подлежит изучению</Stamp>
+          <span class="font-mono text-[0.65rem] uppercase tracking-wider text-muted-foreground">
+            Регистр. № ДНТ-7/04-1986
+          </span>
+        </div>
+
+        <div class="pointer-events-none absolute -bottom-3 right-6 rotate-[8deg] sm:right-16">
+          <OverlayStamp>Архивъ · ДНТ-7</OverlayStamp>
+        </div>
+      </section>
+
+      <section class="mb-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {[
+          { k: 'Дел в картотеке', v: '147' },
+          { k: 'Заземлено агентов', v: '38' },
+          { k: 'Активных участков', v: '9' },
+          { k: 'Уровень тревоги', v: 'III' },
+        ].map((s, i) => (
+          <div
+            key={s.k}
+            class="paper px-4 py-5 text-center"
+            style={{ rotate: tilts[i] }}
+          >
+            <p class="font-heading text-3xl font-700 text-primary">
+              {s.v}
+            </p>
+            <p class="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground">
+              {s.k}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      <section>
+        <div class="mb-8 flex items-end justify-between">
+          <div>
+            <h2 class="font-heading text-2xl font-700 uppercase tracking-wide">
+              Картотека дел
+            </h2>
+            <hr class="rule rule-red mt-2 w-48" />
+          </div>
+          <p class="font-mono text-[0.65rem] uppercase tracking-wider text-muted-foreground">
+            Опись · лист 1
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {DOSSIERS.map((d, i) => (
+            <DossierCard d={d} rotate={tilts[i % tilts.length]} />
+          ))}
+        </div>
+      </section>
+
+      <div class="mt-12">
+        <Perforation />
+      </div>
+    </main>
+
+    <SiteFooter />
+  </div>
+</BaseLayout>

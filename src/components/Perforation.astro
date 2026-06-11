@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props as Props
+---
+
+<div
+  aria-hidden="true"
+  class:list={[
+    'flex h-4 w-full items-center justify-between overflow-hidden px-2 opacity-60',
+    className,
+  ]}
+>
+  {
+    Array.from({ length: 60 }).map(() => (
+      <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-background shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]" />
+    ))
+  }
+</div>

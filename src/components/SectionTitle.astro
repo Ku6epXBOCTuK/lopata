@@ -1,0 +1,17 @@
+---
+interface Props {
+  children?: any
+  index: string
+}
+
+const { children, index } = Astro.props as Props
+---
+
+<h2 class="mb-4 flex items-baseline gap-3 font-heading text-lg font-700 uppercase tracking-wide">
+  <span class="flex h-7 min-w-7 items-center justify-center bg-primary px-1.5 text-sm text-primary-foreground">
+    {index}
+  </span>
+  <span class="flex-1 border-b border-foreground/30 pb-1">
+    {children}
+  </span>
+</h2>

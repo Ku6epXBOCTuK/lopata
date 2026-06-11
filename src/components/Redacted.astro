@@ -1,0 +1,9 @@
+---
+interface Props {
+  children?: any
+}
+
+const { children } = Astro.props as Props
+---
+
+<span class="redacted px-1">{children}</span>
