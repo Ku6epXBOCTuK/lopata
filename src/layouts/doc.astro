@@ -5,12 +5,16 @@ import SiteHeader from "../components/SiteHeader.astro";
 import BaseLayout from "./base.astro";
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
   code?: string;
+  content?: { title?: string; description?: string; code?: string };
 }
 
-const { title, description, code } = Astro.props as Props;
+const content = Astro.props.content || Astro.props;
+const title = content.title;
+const description = content.description;
+const code = content.code;
 ---
 
 <BaseLayout title={`${title} // Архив ДНТ-7`} description={description}>
