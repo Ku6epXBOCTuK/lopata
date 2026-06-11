@@ -1,19 +1,19 @@
 ---
 interface Props {
-  children?: any
-  class?: string
-  skew?: boolean
-  variant?: 'red' | 'ink'
+  children?: any;
+  class?: string;
+  skew?: boolean;
+  variant?: "red" | "ink";
 }
 
-const { children, class: className, skew = true, variant = 'red' } = Astro.props as Props
+const { children, class: className, skew = true, variant = "red" } = Astro.props as Props;
 ---
 
 <span
   class:list={[
-    'stamp px-2 py-1 text-[0.65rem] sm:text-xs',
-    variant === 'ink' && 'stamp-ink',
-    skew && 'stamp-skew',
+    "stamp px-2 py-1 text-[0.65rem] sm:text-xs",
+    variant === "ink" && "stamp-ink",
+    skew && "stamp-skew",
     className,
   ]}
 >

@@ -1,18 +1,15 @@
 ---
 interface Props {
-  children?: any
-  class?: string
+  children?: any;
+  class?: string;
 }
 
-const { children, class: className } = Astro.props as Props
+const { children, class: className } = Astro.props as Props;
 ---
 
 <span
   aria-hidden="true"
-  class:list={[
-    'stamp-overlay pointer-events-none select-none px-4 py-2 font-heading text-2xl sm:text-4xl',
-    className,
-  ]}
+  class:list={["stamp-overlay pointer-events-none select-none px-4 py-2 font-heading text-2xl sm:text-4xl", className]}
 >
   {children}
 </span>

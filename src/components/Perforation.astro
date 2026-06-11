@@ -1,17 +1,14 @@
 ---
 interface Props {
-  class?: string
+  class?: string;
 }
 
-const { class: className } = Astro.props as Props
+const { class: className } = Astro.props as Props;
 ---
 
 <div
   aria-hidden="true"
-  class:list={[
-    'flex h-4 w-full items-center justify-between overflow-hidden px-2 opacity-60',
-    className,
-  ]}
+  class:list={["flex h-4 w-full items-center justify-between overflow-hidden px-2 opacity-60", className]}
 >
   {
     Array.from({ length: 60 }).map(() => (
