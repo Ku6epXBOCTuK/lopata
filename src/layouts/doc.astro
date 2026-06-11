@@ -2,6 +2,7 @@
 import Perforation from "../components/Perforation.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import { base } from "../lib/paths";
 import BaseLayout from "./base.astro";
 
 interface Props {
@@ -33,7 +34,7 @@ const code = content.code;
 
     <main class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <a
-        href="/"
+        href={base}
         class="font-heading text-xs font-600 uppercase tracking-wider text-muted-foreground hover:text-primary"
       >
         ← Вернуться в реестр
@@ -44,7 +45,7 @@ const code = content.code;
 
         <div class="pointer-events-none absolute right-4 top-4 sm:right-8 sm:top-10">
           <img
-            src="/emblem.png"
+            src={`${base}/emblem.png`}
             alt=""
             width="90"
             height="90"

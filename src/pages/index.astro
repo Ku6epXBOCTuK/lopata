@@ -5,6 +5,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import Stamp from "../components/Stamp.astro";
 import BaseLayout from "../layouts/base.astro";
+import { base } from "../lib/paths";
 import { REGISTRY } from "../lib/registry";
 
 const statusLabel: Record<string, string> = {
@@ -52,7 +53,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
 
         <div class="pointer-events-none absolute right-4 top-4 sm:right-8 sm:top-8">
           <img
-            src="/emblem.png"
+            src={`${base}/emblem.png`}
             alt=""
             width="120"
             height="120"
@@ -102,7 +103,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
           {
             REGISTRY.filter((e) => e.status === "open").map((e, i) => (
               <a
-                href={`/docs/${e.slug}`}
+                href={`${base}/docs/${e.slug}`}
                 class="paper group relative flex flex-col gap-2 p-5 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_26px_50px_-22px_rgba(40,25,15,0.7)]"
                 style={{ rotate: tilts[i] }}
               >
@@ -139,7 +140,7 @@ const tilts = ["-0.6deg", "0.5deg", "-0.4deg"];
           {
             REGISTRY.map((entry, i) => {
               const isOpen = entry.status === "open";
-              const href = isOpen ? `/docs/${entry.slug}` : undefined;
+              const href = isOpen ? `${base}/docs/${entry.slug}` : undefined;
               const Tag = isOpen ? "a" : "div";
               return (
                 <Tag
